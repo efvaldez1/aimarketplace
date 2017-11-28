@@ -1,0 +1,105 @@
+mutation {
+  createUser(name: "abc", email: "hello@abc.com", username: "abc") {
+    user {
+      id,
+      name,
+      email,
+      username
+    }
+    ok
+  }
+}
+mutation {
+  createUser(name: "ed", email: "ed@gmail.com", username: "efvaldez") {
+    user {
+      id,
+      name,
+      email,
+      username
+    }
+    ok
+  }
+}
+
+mutation {
+  createUser(name: "White Iverson", email: "iverson@gmail.com", username: "whiteiverson") {
+    user {
+      id,
+      name,
+      email,
+      username
+    }
+    ok
+  }
+}
+
+mutation {
+  createCategory(name: "algorithms") {
+    category {
+      id,
+      name
+    }
+    ok
+  }
+}
+
+mutation {
+  createCategory(name: "software") {
+    category {
+      id,
+      name
+    }
+    ok
+  }
+}
+
+mutation {
+  createCategory(name: "publications") {
+    category {
+      id,
+      name
+    }
+    ok
+  }
+}
+
+mutation {
+  createProduct(name: "Nudity Detection",description:"Detect nudity in pictures",authorId:1,categoryId:1) {
+    product {
+      id,
+      name,
+      description,    
+      authorId,
+      addedOn,
+      categoryId
+    }
+    ok
+  }
+}
+mutation {
+  createProduct(name: "Speech recognition for medical conversations",categoryId:1) {
+    product {
+      id,
+      name,
+      description,
+    
+      authorId,
+      addedOn,
+      categoryId
+    }
+    ok
+  }
+}
+mutation {
+  createOffer(amount:10.2,offerdescription:"Need someone who can implement this for my project. Must be able to do so in 2 months",productId:1,userId:1) {
+    offer {
+      id,
+      amount,
+      offerdescription,
+      productId
+      userId      
+    }
+    ok
+  }
+}
+}

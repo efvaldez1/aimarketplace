@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/eduardo/Documents/work/graphenetutorial/Flask-Graphene-SQLAlchemy/venv"
+set -gx VIRTUAL_ENV "/home/eduardo/Documents/work/aimarketplace/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

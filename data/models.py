@@ -1,19 +1,20 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.declarative import declarative_base, DeferredReflection
 from sqlalchemy.orm import scoped_session, sessionmaker,relationship,backref
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, Text, func, String, Float
 import os
 # Replace 'sqlite:///rfg.db' with your path to database
 #psql -h localhost -U postgres intuitionmachine
-PROJECT_ROOT= os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(os.path.join(PROJECT_ROOT,'/Flask-Graphene-SQLAlchemy/test.db'))
-print(SQLALCHEMY_DATABASE_URI)
+#PROJECT_ROOT= os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+#SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(os.path.join(PROJECT_ROOT,'/Flask-Graphene-SQLAlchemy/test.db'))
+#print(SQLALCHEMY_DATABASE_URI)
 engine = create_engine('postgresql://postgres:admin@localhost/aimarket')
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
-Base = declarative_base()
+#Base = declarative_base(cls=DeferredReflection)
+Base= declarative_base()
 Base.query = db_session.query_property()
 
 class User(Base):
@@ -43,10 +44,11 @@ class Product(Base):
 class Offer(Base):
 	__tablename__="offer"
 	id=Column(Integer,primary_key=True)
-	amount = Column(Float)
+	amount = Column(Integer)
 	offerdescription = Column(Text)
 	product_id = Column(Integer,ForeignKey('product.id'))
-	product=relationship(Product,backref=backref("offers",uselist=True,cascade='delete,all'))	
+	product=relationship(Product,backref=backref("offers",uselist=True,cascade='delete,all'))
+	added_on = Column(DateTime,default=func.now())	
 	user_id = Column(Integer,ForeignKey('users.id'))
 	user=relationship(User,backref=backref("offers",uselist=True,cascade='delete,all'))
 

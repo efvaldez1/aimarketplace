@@ -1,3 +1,45 @@
+{
+  allProducts{
+    edges {
+      node {
+        id,
+        name,
+        description,
+        authorId,
+        addedOn,
+        categoryId,
+        
+      }
+    }
+  }
+}
+
+
+{
+  allUsers{
+  edges{
+    node{
+    id,
+    name,
+    email,
+    username
+    }
+  }
+  }
+}
+
+{
+  allCategories{
+  edges{
+    node{
+    id,
+    name
+    }
+  }
+  }
+}
+
+
 mutation {
   createUser(name: "abc", email: "hello@abc.com", username: "abc") {
     user {

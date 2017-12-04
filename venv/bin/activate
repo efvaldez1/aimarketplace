@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/eduardo/Documents/work/graphenetutorial/Flask-Graphene-SQLAlchemy/venv"
+VIRTUAL_ENV="/home/eduardo/Documents/work/aimarketplace/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -122,6 +122,10 @@ class Query(graphene.ObjectType):
 	find_user = graphene.Field(lambda: Users, username = graphene.String())
 	all_users = SQLAlchemyConnectionField(Users)
 
+	all_products= SQLAlchemyConnectionField(Product)
+	all_offers= SQLAlchemyConnectionField(Offer)
+	all_categories=SQLAlchemyConnectionField(Category)
+
 	def resolve_find_user(self,args,context,info):
 		query = Users.get_query(context)
 		username = args.get('username')
@@ -137,4 +141,4 @@ class MyMutations(graphene.ObjectType):
 
 	change_username = changeUsername.Field()
 
-schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Users])
+schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Users,Product,Category,Offer])

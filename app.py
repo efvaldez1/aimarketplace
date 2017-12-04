@@ -3,8 +3,8 @@
 
 from flask import Flask, render_template
 from flask_graphql import GraphQLView
-from database import db_session
-from schema import schema
+from data.models import db_session
+from data.schema import schema
 
 app = Flask(__name__)
 app.debug = True

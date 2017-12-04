@@ -31,13 +31,32 @@
 {
   allCategories{
   edges{
-    node{
-    id,
-    name
-    }
-  }
+      node{
+        id,
+        addedOn,
+        name
+        }
+      }
   }
 }
+
+{
+  allOffers{
+    edges{
+      node{
+      amount,
+      offerdescription,
+      addedOn,
+      product_id, 
+      user_id
+  
+
+      }
+    }
+  }
+}
+
+
 
 
 mutation {
@@ -119,12 +138,11 @@ mutation {
   }
 }
 mutation {
-  createProduct(name: "Speech recognition for medical conversations",categoryId:1) {
+  createProduct(name: "Speech recognition for medical conversations",authorId:1,categoryId:1) {
     product {
       id,
       name,
-      description,
-    
+      description,  
       authorId,
       addedOn,
       categoryId
@@ -132,8 +150,9 @@ mutation {
     ok
   }
 }
+
 mutation {
-  createOffer(amount:10.2,offerdescription:"Need someone who can implement this for my project. Must be able to do so in 2 months",productId:1,userId:1) {
+  createOffer(amount:10,offerdescription:"Need someone who can implement this for my project. Must be able to do so in 2 months",productId:2,userId:1) {
     offer {
       id,
       amount,
@@ -143,5 +162,4 @@ mutation {
     }
     ok
   }
-}
 }

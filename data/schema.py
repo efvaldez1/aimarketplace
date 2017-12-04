@@ -141,4 +141,6 @@ class MyMutations(graphene.ObjectType):
 
 	change_username = changeUsername.Field()
 
+
+#schema
 schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Users,Product,Category,Offer])
